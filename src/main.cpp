@@ -1,21 +1,16 @@
-#include <SFML/Graphics.hpp>
+#include <Game/Game.hpp>
 
 int main()
 {
-    auto window = sf::RenderWindow(sf::VideoMode({1920u, 1080u}), "CMake SFML Project");
-    window.setFramerateLimit(144);
+    const sf::Vector2u windowSize = {1920, 1080};
+    const std::string title = "Super cool flappy game";
+    const float framerate = 144;
+    float gravity = -9.8f;
+    
 
-    while (window.isOpen())
-    {
-        while (const std::optional event = window.pollEvent())
-        {
-            if (event->is<sf::Event::Closed>())
-            {
-                window.close();
-            }
-        }
-
-        window.clear();
-        window.display();
-    }
+    Game* game = new Game(windowSize, title, framerate);
+    game->Init(gravity);
+    game->Run();
+    game->Shutdown();
+	return 0;
 }
