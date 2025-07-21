@@ -35,7 +35,7 @@ private:
 
 	// DEBUG SECTION
 
-	const bool debug_mode = true;
+	const bool debug_mode = false;
 	std::unique_ptr<DebugBox> debug_CollisionBox;
 	std::unique_ptr<DebugBox> debug_SpriteBoundingBox;
 };

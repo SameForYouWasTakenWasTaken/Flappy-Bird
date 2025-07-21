@@ -61,7 +61,7 @@ void Bird::Update(float dt) {
 	m_Sprite->move({ 0, -m_Velocity });
 
 	// Set the rotation
-	sf::Angle rotation = sf::degrees(-m_Velocity);
+	sf::Angle rotation = sf::degrees(-m_Velocity * 2);
 	rotation = std::clamp(rotation, BirdConfig::MinimumAngle, BirdConfig::MaximumAngle);
 
 	m_Sprite->setRotation(rotation);
