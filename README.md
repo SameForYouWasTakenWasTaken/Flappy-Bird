@@ -17,6 +17,9 @@ Inside the `Bird` and `Pipe` class (under `include/Game/Bird.hpp` or `include/Ga
 
 # 🛠️ How to build it:
 
+### ❗IMPORTANT
+Before we dive into the building proccess, please do note that as of `21/07/2025` you can **ONLY** build this project on **WINDOWS**. Linux and Mac compatability will be one of the last things I will do.
+
 ## ✅ Prerequisites
 - You need a [PC](https://en.wikipedia.org/wiki/Personal_computer).
 - You need [git](https://git-scm.com/) installed.
