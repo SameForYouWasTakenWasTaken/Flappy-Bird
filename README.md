@@ -27,9 +27,22 @@ Before we dive into the building process, please do note that as of `21/07/2025`
 - A [frontal lobe](https://en.wikipedia.org/wiki/Frontal_lobe).
 
 
-## Building process
-First, open a command prompt inside any folder and clone the repository:
+## 🛠️ Building process
+### 📝  BAT FILE BUILDING
+To build the actual project, install the `build_runfile.bat` file in the repository or using the releases
+tab on GitHub.
 
+❗Make sure there is no "Flappy-Bird" folder in the actual directory of the `.bat` file. Either
+clone the entire repository and run the `.bat` file, or download the `.bat` file and it will **create** a Flappy-Bird
+folder with the entire project already downloaded using `git`.
+
+The `batch` file runs the `CMakeLists.txt` file using `CMake` and runs the commands found underneath here.
+(with a few small changes, like specifying the build type and the build folder will have a specific name based on the build type)
+
+Technically, you could use this `.bat` file with any `CMakeLists.txt` file, as it only runs the default
+build command.
+### 🖥️ COMMAND LINE BUILDING
+First, open a command prompt inside any folder and clone the repository.
 
 ```cmd
 git clone https://github.com/SameForYouWasTakenWasTaken/Flappy-Bird

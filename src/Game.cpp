@@ -1,6 +1,5 @@
 #include <iostream>
 #include <filesystem>
-#include <string>
 #include <memory>
 #include <vector>
 
@@ -33,7 +32,6 @@ void Game::Init(float gravity) {
 
 	// Create the bird
 	m_Bird = std::make_unique<Bird>(gravity);
-
 
 	// Clean memory
 	delete temp_texture;
