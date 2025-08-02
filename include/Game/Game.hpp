@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <string>
 #include <memory>
 #include <vector>
 
@@ -10,7 +9,7 @@
 class Game {
 public:
 	// Construct functions
-	Game(const sf::Vector2u windowSize, const std::string& title, unsigned int framerate);
+	Game(sf::Vector2u windowSize, const char* title, unsigned int framerate);
 	void Init(float gravity);
 	void Run();
 	void Shutdown();

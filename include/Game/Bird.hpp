@@ -8,12 +8,12 @@
 
 class Bird {
 public:
-	Bird(float gravity);
+	explicit Bird(float gravity);
 	~Bird() {
 		std::cout << "Bird destroyed" << std::endl;
 	}
-	void Draw(sf::RenderWindow& window); // Draw the bird to the screen
-	void Update(float dt); // Update the bird (position, size, etc) based on delta time
+	void Draw(sf::RenderWindow& window) const; // Draw the bird to the screen
+	void Update(float dt); // Update the bird (position, size, etc.) based on delta time
 	void Flap(); //'key' will be checked if it is m_FlapKey.
 	void DisableControls();
 	void Die();

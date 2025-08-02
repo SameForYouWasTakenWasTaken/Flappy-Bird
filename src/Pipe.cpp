@@ -17,18 +17,20 @@ int RandomNumber(T a, T b) {
 
 	return dist(rng);
 }
-Pipe::Pipe(sf::RenderWindow& window) {
+Pipe::Pipe(const sf::RenderWindow& window) {
 	m_Texture.loadFromFile("assets/images/Pipe.png");
 
 	m_Sprite = std::make_unique<sf::Sprite>(m_Texture);
 	m_CurrentLifeTime = std::make_unique<sf::Clock>();
 
 	sf::Vector2u windowSize = window.getSize();
-	float offset = PipeConfig::bottom_XPipeSpawnOffset;
-	float spriteRightPosition = windowSize.x - m_Sprite->getGlobalBounds().size.x + offset;
-	
-	float height = RandomNumber(PipeConfig::bottom_MinimumPipeSpawnHeight, PipeConfig::bottom_MaximumPipeSpawnHeight);
-	
+	const float offset = PipeConfig::bottom_XPipeSpawnOffset;
+
+	float spriteRightPosition = static_cast<float>(windowSize.x) - m_Sprite->getGlobalBounds().size.x + offset;
+
+	auto height = static_cast<float>(RandomNumber(PipeConfig::bottom_MinimumPipeSpawnHeight,
+	                                               PipeConfig::bottom_MaximumPipeSpawnHeight));
+
 	m_Sprite->setPosition({ spriteRightPosition, height });
 	m_CurrentLifeTime->start();
 
@@ -48,7 +50,7 @@ Pipe::Pipe(sf::RenderWindow& window) {
 	}
 }
 
-Pipe::Pipe(sf::RenderWindow& window, std::unique_ptr<Pipe>& otherPipe){
+Pipe::Pipe(sf::RenderWindow& window, const std::unique_ptr<Pipe>& otherPipe){
 	m_Texture.loadFromFile("assets/images/Pipe.png");
 
 	m_CurrentLifeTime = std::make_unique<sf::Clock>();
@@ -86,7 +88,7 @@ Pipe::Pipe(sf::RenderWindow& window, std::unique_ptr<Pipe>& otherPipe){
 	}
 }
 
-void Pipe::checkCollision(std::unique_ptr<Bird>& bird) {
+void Pipe::checkCollision(const std::unique_ptr<Bird>& bird) const {
 	if (!bird->IsDead() && m_Sprite != nullptr) {
 		sf::FloatRect bird_bounds = bird->getCollisionBox().getGlobalBounds();
 		sf::FloatRect pipe_bounds = m_Sprite->getGlobalBounds();
@@ -97,7 +99,7 @@ void Pipe::checkCollision(std::unique_ptr<Bird>& bird) {
 	}
 }
 
-void Pipe::Draw(sf::RenderWindow& window) {
+void Pipe::Draw(sf::RenderWindow& window) const {
 	window.draw(*m_Sprite);
 
 	// DEBUG SECTION
