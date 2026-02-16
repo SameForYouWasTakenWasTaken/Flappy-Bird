@@ -10,7 +10,7 @@ Bird::Bird(float gravity) {
 
 	// Create the sprite
 	m_Sprite = std::make_unique<sf::Sprite>(m_Texture);
-	// Set the origin at exactly the middle left side of the sprite. Used for the tilting when flapping
+	// Set the origin at exactly the middle-left side of the sprite. Used for the tilting when flapping
 	m_Sprite->setOrigin({ m_Sprite->getGlobalBounds().size.x / 2, m_Sprite->getGlobalBounds().size.y / 2 });
 	m_Sprite->setPosition({ 200, 150 });
 
@@ -34,7 +34,7 @@ Bird::Bird(float gravity) {
 	}
 }
 
-void Bird::Draw(sf::RenderWindow& window) {
+void Bird::Draw(sf::RenderWindow& window) const {
 	window.draw(*m_Sprite);
 
 	// DEBUG SECTION
