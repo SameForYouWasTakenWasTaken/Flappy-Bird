@@ -46,6 +46,7 @@ First, open a command prompt inside any folder and clone the repository.
 
 ```cmd
 git clone https://github.com/SameForYouWasTakenWasTaken/Flappy-Bird
+cd Flappy-Bird
 ``` 
 
 
@@ -54,18 +55,20 @@ Now we should create an empty folder called `build` for our build files to gener
 
 ```cmd 
 mkdir build
+cd build
 ```
 
 Now we need to tell CMake to build our project in that build folder:
 
 ```cmd 
-cmake -E chdir build cmake ..
+cmake -G "MinGW Makefiles" -S .. -B .
 ```
+❗Make sure the build system (In this case, I'm using MinGW Makefiles compatible with GCC and Clang) you are using is compatible with your compiler!
 
 After we have done that and waited quite a bit, we should finally build it:
 
 ```cmd 
-cmake --build build
+cmake --build .
 ```
 
 Once the project has finally built everything, enter the `build` folder and enter the `bin` folder. Your game should be ready, called as `main.exe`!
