@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
-#include <print>
+#include <iostream>
 
 #include "Debugging/DebugBox.hpp"
 
@@ -56,7 +56,7 @@ void DebugBox::setPosition(sf::Vector2f position) {
 
 void DebugBox::Update() {
 	if (GetSprite()) {
-		std::println("Updating!");
+		std::cout << "UPDATING!" << std::endl;
 		if (m_PositionEnabled) {
 			m_Rectangle->setPosition(m_Position); // Set position
 			setPosition(m_Sprite->getPosition()); // Update position

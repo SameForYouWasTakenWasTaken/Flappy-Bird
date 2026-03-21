@@ -10,11 +10,11 @@ class Pipe {
 public:
 	bool isExpired = false;
 
-	Pipe(sf::RenderWindow& window);
-	Pipe(sf::RenderWindow& window, std::unique_ptr<Pipe>& otherPipe);
-	void Draw(sf::RenderWindow& window);
+	Pipe(const sf::RenderWindow& window);
+	Pipe(sf::RenderWindow& window, const std::unique_ptr<Pipe>& otherPipe);
+	void Draw(sf::RenderWindow& window) const;
 	void Update(float dt);
-	void checkCollision(std::unique_ptr<Bird>& bird);
+	void checkCollision(const std::unique_ptr<Bird>& bird) const;
 	sf::Sprite& getSprite() { return *m_Sprite; }
 
 private:

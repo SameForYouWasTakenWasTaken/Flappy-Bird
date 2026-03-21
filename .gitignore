@@ -7,3 +7,5 @@ out
 CMakeFiles
 _deps
 CmakeCache.txt
+cmake-build-debug
+cmake-build-release

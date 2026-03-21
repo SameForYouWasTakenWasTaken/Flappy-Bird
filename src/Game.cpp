@@ -1,6 +1,5 @@
 #include <iostream>
 #include <filesystem>
-#include <string>
 #include <memory>
 #include <vector>
 
@@ -11,7 +10,7 @@
 
 namespace fs = std::filesystem;
 
-Game::Game(const sf::Vector2u windowSize, const std::string& title, unsigned int framerate)
+Game::Game(const sf::Vector2u windowSize, const char* title, unsigned int framerate)
 {
 	m_Window.create(sf::VideoMode(windowSize), title);
 	m_Window.setFramerateLimit(framerate);
@@ -20,7 +19,7 @@ Game::Game(const sf::Vector2u windowSize, const std::string& title, unsigned int
 void Game::Init(float gravity) {
 	
 	// Make sure the images in './assets/images/' are valid and can be assigned to a texture
-	sf::Texture* temp_texture = new sf::Texture();
+	auto* temp_texture = new sf::Texture();
 
 	for (const auto& entry : fs::recursive_directory_iterator("assets/images")) {
 		if(temp_texture->loadFromFile(entry.path())) { 
@@ -34,15 +33,12 @@ void Game::Init(float gravity) {
 	// Create the bird
 	m_Bird = std::make_unique<Bird>(gravity);
 
-
 	// Clean memory
 	delete temp_texture;
 }
 
 
 void Game::ProcessEvents() {
-	bool pressed_jump_button = false;
-
 	while (const std::optional event = m_Window.pollEvent())
 	{
 		if (event->is<sf::Event::Closed>())
@@ -99,12 +95,9 @@ void Game::Update(float dt) {
 	}
 
 	//  Remove expired pipes
-	m_Pipes.erase(
-		std::remove_if(m_Pipes.begin(), m_Pipes.end(), [](const PipeGroup& pipe_group) {
-			return pipe_group.bottomPipe->isExpired || pipe_group.topPipe->isExpired;
-			}),
-		m_Pipes.end()
-	);
+	std::erase_if(m_Pipes, [](const PipeGroup& pipe_group) {
+		return pipe_group.bottomPipe->isExpired || pipe_group.topPipe->isExpired;
+	});
 	 
 }
 
